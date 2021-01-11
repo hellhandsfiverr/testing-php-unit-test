@@ -1,5 +1,5 @@
 {
-  "name": "alldigitalrewards/transaction-source-enum",
+  "name": "alldigitalrewards/transactionsourceenum",
   "type": "library",
   "description": "Library for identifying Transaction Source.",
   "keywords": [
