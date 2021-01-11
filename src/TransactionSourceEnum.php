@@ -8,4 +8,5 @@ class TransactionSourceEnum
     const MARKETPLACE = 'MARKETPLACE';
     const GAMES = 'GAMES';
     const REDEMPTION_CAMPAIGNS = 'REDEMPTION_CAMPAIGNS';
+    const SWEEPSTAKE = 'SWEEPSTAKE';
 }
