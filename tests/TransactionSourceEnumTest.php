@@ -13,5 +13,6 @@ class TransactionSourceEnumTest extends TestCase
         $this->assertSame('MARKETPLACE', (new TransactionSourceEnum)::MARKETPLACE);
         $this->assertSame('REDEMPTION_CAMPAIGNS', (new TransactionSourceEnum)::REDEMPTION_CAMPAIGNS);
         $this->assertSame('GAMES', (new TransactionSourceEnum)::GAMES);
+        $this->assertSame('SWEEPSTAKE', (new TransactionSourceEnum)::SWEEPSTAKE);
     }
 }
