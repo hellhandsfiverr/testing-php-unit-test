@@ -1,6 +1,6 @@
 name: Github Actions for PHP with PHPUnit Tests
 
-on: [push]
+on: [pull]
 
 jobs:
   build:
