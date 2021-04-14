@@ -1,12 +1,37 @@
-on: push
-name: CI
+name: CI/CD
+on:
+  push:
+    branches:
+    - master
+
 jobs:
-  phpunit:
+  test:
+    name: checkout and test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      # For YAML Actions, use v1 or later
-      - uses: pxgamer/phpunit-action@master
-        with:
-          # If there isn't a PHPUnit config, specify files or directories to test
-          command: tests/
+    - name: checkout project
+      uses: actions/checkout@v1
+    - name: composer install missing files
+      run: composer install
+    - name: run tests
+      run: /usr/bin/php -f bin/phpunit > output.txt
+    - name: save output
+      uses: actions/upload-artifact@v1
+      with:
+        name: output
+        path: output.txt
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - name: retrieve output
+      uses: actions/download-artifact@v1
+      with:
+        name: output
+    - name: check results
+      run: |
+        export PHPUNIT_OUTPUT = grep -q OK "output.txt"
+    - name: conditional
+      if: {{$PHPUNIT_OUTPUT==1}}
+      run: echo test
